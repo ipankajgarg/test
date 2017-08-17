@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta content="width=device-width, initial-scale=1.0" name="viewport" >
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>     
+<link rel="stylesheet" href="style.css">
+<script src="libs/angular.min.js"></script>
+<script src="foodjs/module.js"></script>
+<script src="foodjs/factory.js"></script>
+<script src="foodjs/controller.js"></script>
+<style>
+#content .userlist{
+    background-color: #f6f6f6;
+    width: 80%;
+    text-transform: capitalize;
+}
+ul{
+    padding: 0px;
+    margin: 0px;
+}
+ul li{
+    list-style: none;
+    
+}
+#content .userlist li:hover{
+    background-color: #ffffff;
+}
+#content .userlist li:first-child{
+    background-color: #f6f6f6;
+}
+#content .userlist li{
+    padding: 10px 0px;
+}
+#content .userlist ul li a{
+    color: #000000;
+    padding: 0px 0px;
+    
+    display: block;
+    width: 100%;
+    padding-left: 28%;
+    font-size: 18px;
+    text-decoration: none;
+}
+#content .move{
+    transform: translateX(-500px);
+    transition: 1s;
+    
+}
+#content .userlist{
+    transform: translateX(200px;);
+        transition: 1s;
+    position: absolute;
+    width: 80%;
+    z-index: 5;
+}
+body{
+
+  background:#ffffff;
+}
+.navbar-bg{
+  font-family:"Sans",Verdana,"sans-serif";
+  font-weight:bold;
+  font-size:2.5em;
+  color:#e50000;
+  margin-top:5px;
+}
+#header {
+  background: #ffffff;
+  border-bottom: 1px rgba(0, 0, 0, 0.07) solid;
+  z-index: 99;
+  &.--not-top {
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  }
+}
+* {
+  transition-duration: 0.2s;
+}
+ 
+#top-shadow {
+position: fixed;
+top: 0;
+left: 20px;
+width: 100%;
+height: 60px;
+z-index: 999;
+-webkit-box-shadow: 0 8px 8px rgba(211, 211, 211, 0.8);
+-moz-box-shadow: 0 8px 8px rgba(211, 211, 211, 0.8);
+box-shadow: 0 8px 8px rgba(211, 211, 211, 0.8);
+display: none;
+}
+
+.navbar.affix{  
+top:0; 
+width:100%;
+}
+
+ 
+.navbar{    
+z-index:1000;  
+}
+.img-responsive{
+  margin-top:-8px;
+}
+#content .nav-button span{
+    font-size: 30px;
+    margin-left: 20px;
+    color: #000000;
+    cursor: pointer;
+}
+#content .delivery-option {
+    margin-top: 10px;
+}
+#content .delivery-option li{
+    display: inline-block;
+    padding-left: 30px;
+    text-transform: capitalize;
+    font-size:20px;
+    color:#000000;
+    font-family:"Sans",Verdana,"sans-serif";
+    text-decoration:none;
+    cursor:pointer;
+}
+#content .delivery-option li a{
+    text-decoration: none;
+    font-size:20px;
+    color:#000000;
+    cursor:pointer;
+    font-family:"Sans",Verdana,"sans-serif";
+}
+#content .storelist li{
+    display: block;
+    padding: 0px;
+    border-bottom: 1px solid #000000;
+}
+#content .storelist{
+    display: none;
+    position: absolute;
+    width: 50%;
+    background-color: #f6f6f6;
+    margin-left:250px;
+      
+}
+#content .storelist li a{
+    color: #000000;
+     padding: 5px;
+    display: block;
+    font-size: 15px;
+}
+#content .storelist li:hover{
+    background-color: red;
+}
+#content .delivery-option .show{
+    display: block;
+    top: 37px;
+    z-index: 5;
+    left: 20px;
+    
+}
+@media(max-width:320px){
+    #content .delivery-option{
+        margin-left: -10px;
+        padding-left:30px;
+    }
+  
+     
+}
+@media(max-width:576px){
+    #content .delivery-option{
+        margin-left: -10px;
+    }
+}
+@media(max-width:480px){
+    #content .delivery-option{
+        margin-left: -10px;
+    }
+      #content .delivery-option li{
+        padding: 5px;
+    }
+    #content .cart-icon a{
+        padding: 4px 10px;
+    }
+}
+ 
+
+/*content media*/
+@media(max-width:992px){
+    #content .delivery-option li{
+        padding-left: 20px;
+    }
+}
+@media(max-width:767px){
+    #content .delivery-option li{
+        padding: 10px;
+    }
+    #content .delivery-option{
+        margin-left: -80px;
+        margin-top: 0px;
+    }
+   
+}
+#content .datalogo{
+    width: 30%;
+    margin-left: 35%;
+    margin-top:20px;
+}
+
+/*
+#content .bigbazar{
+    background-color: #f7f7f7;
+}
+*/
+#content .datalogo img{
+    width: 100%;
+}
+
+#content .datasection li .productimage{
+/*    width: 70%;*/
+    width: 150px;
+    margin-left: 20px;;
+    
+    
+}
+#content .unit{
+    font-size: 17px;
+    color: lightgrey;
+}
+#content .datasection span{
+    text-transform: uppercase;
+    font-family:"Sans",Verdana,"sans-serif";
+    text-decoration:none;
+    font-size: 20px;
+    margin-top:30px;
+}
+#content .datasection{
+    text-align: center;
+        
+    
+}
+
+
+#content .datasection .addbutton button{
+        background-color: #fb641b;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 20px;
+    margin-left: 20px;
+    
+    text-transform: uppercase;
+}
+#content .productmain{
+    margin: 50px 0px;
+}
+#content .productmain ul{
+
+    display: flex;
+    flex-wrap: wrap;
+
+        padding: 0px;
+}
+
+#content .datasection li {
+/*display: inline-block;*/
+    width: 290px;
+/*    margin: 20px;*/
+
+    border: 1px solid #d3d3d3;
+    height: 250px;
+    padding: 25px;
+    background-color:#f6f6f6;
+    margin: 5px;
+    border-radius: 10px;
+    position:relative;
+    
+}
+ 
+#content .datasection li:hover{
+    border: 1px solid #ccc;
+}
+#content .datasection li:hover img{
+    
+/*    transform: scale(1.1);*/
+    transform: translateY(-10px);
+    transition: 1s;
+}
+#content .datasection li img:hover{
+   transform: scale(1.1); 
+    transition: 2s;
+}
+#content .datasection li .productimage img{
+    width: 100%;
+    transition: 1s;
+}
+#content .datasection .productdescription span{
+    text-transform:capitalize;
+    font-family:"Sans",Verdana,"sans-serif";
+    font-size:16px;
+    color:#000000;
+    text-decoration:none;
+}
+
+
+@media(max-width:1224px){
+    #content .productmain ul li{
+        width: 220px;
+    }
+}
+
+
+
+
+/*modal*/
+.modal-content .nextimage{
+    text-align: center;
+}
+
+#content  .modal-content .nextimage img{
+    width: 65%;
+}
+#content .red{
+   background-color:red;
+}
+#content  .modal-content span{
+    font-size: 22px;
+}
+#content  .modal-content .unit{
+    font-size: 17px;
+    color: lightgrey;
+}
+.b1{
+   
+  position: relative;
+  margin-bottom:0px;
+  margin-top:10px;
+
+
+}
+.form-control{
+  border:2px solid #d3d3d3;
+  border-radius:4px;
+  margin-top:5px;
+  text-align:center;
+  font-family:"Sans",Verdana,"sans-serif";
+}
+.datasection{
+  margin-top:10px;
+}
+.btn-sm{
+  border-radius:40px;
+  
+}
+.row_11{
+    padding-top: 10px;
+    padding-bottom: 10px;
+  font-family: "Sans",Verdana,'sans-serif';
+  font-weight:bold;
+  font-size:1.5em;
+/*  background: #ffffff;*/
+    background: black;
+}
+.row_13{
+  background:#000000;
+   
+
+ }
+.row_13 i{
+    color: white;
+}
+ .social:hover {
+     -webkit-transform: scale(1.1);
+     -moz-transform: scale(1.1);
+     -o-transform: scale(1.1);
+ }
+ .social {
+     -webkit-transform: scale(0.8);
+     -moz-transform: scale(0.8);
+     -o-transform: scale(0.8);
+     -webkit-transition-duration: 0.5s;
+     -moz-transition-duration: 0.5s;
+     -o-transition-duration: 0.5s;
+ }
+ 
+ #social-fb:hover {
+     color: #3B5998;
+ }
+ #social-tw:hover {
+     color: #4099FF;
+ }
+ #social-gp:hover {
+     color: #d34836;
+ }
+ #social-em:hover {
+     color: #f39c12;
+ }
+ .bg1{
+  margin-top:50px;
+   
+ }
+ .bg18{
+  padding-top:20px;
+  margin-top:90px;
+ }
+ .row_12{
+  background-color: #000000;
+  color:#ffffff;
+  font-size:1.5em;
+  font-weight: bold;
+  font-family:"Sans",Verdana,"sans-serif";
+  text-align: center;
+  padding-bottom:10px;
+  margin-top:0px;
+}
+.col-md-2 a{
+/*  color:#000000;*/
+    color: white;
+ font-size: 15px;
+
+}
+.col-md-2 a:hover{
+  text-decoration:none;
+  color:#ff0000;
+
+}
+ 
+</style>
+
+</head>
+
+
+<body ng-app="myapp" ng-controller="myctrl" data-spy="scroll" data-target="#myScrollspy">
+  <nav class="navbar navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar1">
+                
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand"><img src="https://s3-us-west-2.amazonaws.com/halanx-web/logo.png" class="img-responsive img-circle" width="50" height="50"> </a>
+            <a class="navbar-brand navbar-bg">Halanx</a>
+        </div>
+        <!-- menu items -->
+         
+    </div>
+</nav>
+                  
+
+                      
+ <div id="content" name="toTop" id="toPos">
+           <div class="container-fluid" name="toTop" id="toPos">
+               <div class="row">
+                   <div class=" col-lg-3 col-md-3 col-sm-4 col-12">
+                       <div class="nav-button">
+                           <span ng-click="addsidebar()" class="sidebutton">
+                               <i class="fa fa-bars" aria-hidden="true"></i>
+                         </span>
+                       </div>
+                       <div class="userlist" ng-class={"move":movex}>
+                        <ul>
+                            <li><a href="">My Accounts</a></li>
+                            <li><a href="">Payments</a></li>
+                            <li><a href="internalpages-master/myorders.html">My Orders</a></li>
+                            <li><a href="favourites/fav.html">Favourites</a></li>
+                            <li><a href="">Points</a></li>
+                            <li><a href="internalpages-master/notifications.html">Notification</a></li>
+                            <li><a href="">Express Loyalty Cards</a></li>
+                        </ul>
+                       </div>
+                   </div>
+                   <div class="col-lg-5 col-sm-6 col-9">
+                       <div class="delivery-option">
+                           <ul>
+                              <li class="new3"><a href="#">delivery location</a></li>
+                              <li><a href="" ng-click="addstore()">shopping in</a>
+                                <div class="storelist" ng-class={"show":showclass}>
+                                  <ul>
+                                  <li ng-repeat="store in storedata" ng-click="mystore(store.id)">
+                                      <a href="">{{store.StoreName}}</a>
+                                  </li>
+
+                                      
+                                  </ul>
+
+                              </div>
+                              </li>
+                              <li><a href="">for</a></li>
+                           </ul>
+                       </div>
+                   </div>
+                   <div class=" col-sm-2 offset-lg-2 offset-md-1 col-3" >
+                       <div class="cart-icon">
+                          <a href="cart.html">
+                         <button type="button" class="btn btn-md btn-danger"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+<span ng-model = "counter">{{counter}}</span>
+                           </a>
+                           
+                       </div>
+                   </div>
+               </div>
+               <div class="row">
+                   <div class="col-sm-12">
+                       <div class="datalist">
+   <div class="datalogo">
+    <img ng-src="{{StoreLogo}}" alt="">
+    
+    
+</div>
+<div class="datasection">
+<span>{{StoreName}}</span>
+   
+    <div class="productmain">
+       
+        <ul>
+            <li ng-repeat="data in mydata" $parent.quantity= quantity data-toggle="modal" data-target="#exampleModalLong" ng-click="addmodal(data)">
+           
+             <div class="product" >   
+<!--
+             <div class="productimage" >
+             <img ng-src="{{data.ProductImage}}"> 
+
+              </div>
+-->
+              <div class="productdescription">
+                  <span class="productname">{{data.ProductName}}</span>
+                  
+                  <br>
+                  <span class="productprice"><i class="fa fa-inr" aria-hidden="true"></i>{{data.Price}}</span>
+                   <img src="images/Like-48%20(1).png"  ng-click="addfav(data)"   ng-class={"red":data.FavoriteField}  style="width:10%;">
+
+
+                   <div class="counter-cart">
+                        <button ng-click="quantity = quantity-1" ng-disabled="quantity==1" class="btn btn-sm btn-danger btn-circle"><i class="glyphicon glyphicon-minus"></i></button>
+
+                        <span  class="test" ng-model="quantity" ng-init="quantity=1">{{quantity}}</span>
+                        <button ng-click="quantity = quantity+1" class="btn btn-danger btn-sm btn-circle" ><i class="glyphicon glyphicon-plus"></i></button>
+         
+
+                  
+                         <button type="button" class="btn btn-md btn-danger b1" ng-click="addtocart(data,quantity)">Add to Cart</button>
+              </div>
+              </div>
+              
+              </div>
+                            
+               
+            </li>
+        </ul>
+
+    </div>
+
+</div>
+ 
+</div>
+                   </div>
+               </div>
+               
+               
+               
+</div>
+       </div>
+  </div>
+
+
+
+<div class="container-fluid bg18">
+  <div class="row row_11">
+    <div class="col-md-2 col-sm-8 col-xs-12 text-center"><a href="aboutus.html">About Us</a></div>
+    <div class="col-md-2 col-sm-8 col-xs-12 text-center"><a href="#">Careers</a></div>
+    <div class="col-md-2 col-sm-8 col-xs-12 text-center"><a href="#">Blog</a></div>
+    <div class="col-md-2 col-sm-8 col-xs-12 text-center"><a href="contactus.html">Contact Us</a></div>
+    <div class="col-md-2 col-sm-8 col-xs-12 text-center"><a href="privacy.html">Privacy</a></div>
+    <div class="col-md-2 col-sm-8 col-xs-12 text-center"><a href="terms.html">Terms</a></div>
+  </div>
+
+  <div class="row row_13">
+    <div class="text-center center-block">
+         <a href="https://www.facebook.com/halanxtech"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
+       <a href="https://www.twitter.com/halanxtech"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
+       <a href="https://www.instagram.com/halanxtech"><i id="social-gp" class="fa fa-instagram fa-3x social"></i></a>
+
+    </div>
+  </div>
+
+
+   <div class="row row_12">
+  <span class="glyphicon glyphicon-copyright-mark"> Halanx 2017 </span>
+   </div>
+</div>
+
+   
+    
+</body>
+<script>
+$(function(){
+var navbar = $('.navbar');
+$(window).scroll(function(){
+    if($(window).scrollTop() <= 40){
+      navbar.css('box-shadow', 'none');
+    } else {
+      navbar.css('box-shadow', '0px 10px 20px rgba(0, 0, 0, 0.4)'); 
+    }
+});  
+})
+$(function(){
+
+
+var stickyElement   = '.panel-affix',    
+bottomElement   = '#fake-footer';  
+
+if($( stickyElement ).length){
+$( stickyElement ).each(function(){
+
+   
+  var fromTop = $( this ).offset().top, 
+    
+    fromBottom = $( document ).height()-($( this ).offset().top + $( this ).outerHeight()),
+    
+    stopOn = $( document ).height()-( $( bottomElement ).offset().top)+($( this ).outerHeight() - $( this ).height()); 
+
+   
+  if( (fromBottom-stopOn) > 200 ){
+     
+    $( this ).css('width', $( this ).width()).css('top', 0).css('position', '');
+     
+    $( this ).affix({
+      offset: { 
+        
+        top: fromTop - 80,  
+         
+        bottom: stopOn
+      }
+    
+    }).on('affix.bs.affix', function(){ $( this ).css('top', '80px').css('position', ''); });
+  }
+  
+  $( window ).trigger('scroll'); 
+}); 
+}
+
+});
+
+
+$('body').scrollspy({
+offset: 80
+});
+
+
+$(function() {
+$('a[href*=#]:not([href=#])').click(function() {
+if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+var target = $(this.hash);
+target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+if (target.length) {
+$('html,body').animate({
+  scrollTop: target.offset().top
+}, 1000);
+return false;
+}
+}
+});
+});
+</script>
+</html>

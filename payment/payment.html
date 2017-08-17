@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta content="width=device-width, initial-scale=1.0" name="viewport" >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="../libs/angular.min.js"></script>
+    <script>
+    var app = angular.module("myapp",[]);
+        app.controller("myctrl",($scope,myfactory)=>{
+           $scope.postorder = ()=>{
+               alert("hello")
+               var obj = {};
+               obj.DeliveryDate = localStorage.getItem("DeliveryDate");
+               var json =  localStorage.getItem("Address");
+               var splitaddress = JSON.parse(json)
+               obj.DeliveryAddress =splitaddress.Flatno+ ","+splitaddress.Area +","+splitaddress.city
+                 obj.AsSoonAsPossible =  localStorage.getItem("AsSoonAsPossible");
+                obj.StartTime = "12:00"
+//                    localStorage.getItem("StartTime");
+               var destination = localStorage.getItem("obj");
+               var latlon = JSON.parse(destination)
+               obj.Latitude = latlon.Latitude;
+               obj.Longitude = latlon.Longitude;
+//               obj.EndTime = ""
+               obj.CustomerPhoneNo = localStorage.getItem("mobilenumber")
+//               console.log(myschedule[0])
+//               console.log(address)
+               console.log(obj)
+              var promise =  myfactory.placeorder(obj);
+               promise.then(function(data){
+        console.log(data)
+//       $scope.storedata = data;
+//        console.log($scope.storedata);
+        window.location = "http://localhost/halanx-final/new1big-kfc/main.html"
+      },function(err){
+        alert("err");   
+    } );
+           } 
+        })
+        app.factory("myfactory",($http,$q)=>{
+           var object = {
+              placeorder : function(obj){
+                   var pr = $q.defer();
+         var url = "http://ec2-34-208-181-152.us-west-2.compute.amazonaws.com/orders/";
+        
+           console.log(obj)     
+         $http.post(url,obj).then(function(data){
+             pr.resolve(data.data)
+             console.log("success")
+           
+         },
+                             function(err){
+             pr.reject(err)
+             console.log("error")
+             
+         }
+         )
+         return pr.promise
+              } 
+           } 
+           return object
+        })
+    </script>
+     <style>
+    .navbar-fixed-top{
+    background-color:#ffffff;
+}
+.img-responsive{
+     margin-top: -10px;
+}
+.modal-header{
+  background : #c0392b;
+}
+.navbar-right{
+    color: #ff0000;
+    font-family:"Sans",Verdana,"sans-serif";
+    font-weight:bold;
+}
+.navbar-bg{
+    color: #e50000;
+    font-family: "Sans",Verdana,"sans-serif";
+    font-weight:bold;
+    font-size:2.5em;
+}
+.pull-right{
+  padding-left: 20px;
+  padding-right: 9px;
+  margin-right: 10px;
+  margin-top:8px;
+}
+#content{
+    margin-top: 100px;
+}
+#content .payment ul{
+    margin: 0px;
+    padding: 0px;
+    
+}
+#content .payment li{
+    text-transform: capitalize;
+    font-size: 25px;
+    cursor: pointer;
+     border:1px solid #d3d3d3;
+    padding:10px 10px;
+    margin:15px;
+    border-radius:5px;
+    text-decoration:none;
+    list-style:none;
+    text-align:center;
+   
+
+}
+ 
+</style>
+</head>
+<body ng-app="myapp" ng-controller="myctrl">
+<nav class="navbar navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+          <!-- add header -->
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar1">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="index.php"><img src="https://s3-us-west-2.amazonaws.com/halanx-web/logo.png" class="img-responsive img-circle" width="50" height="50"> </a>
+              <a class="navbar-brand navbar-bg" href="index.html">Halanx</a>
+          </div>
+          <!-- menu items -->
+          <div class="collapse navbar-collapse" id="navbar1">
+              <ul class="nav navbar-nav navbar-right">
+                 <!--<button class="btn btn-danger btn-md pull-right" onclick="window.location='login.php'"> Login </button>-->
+                  
+              </ul>
+          </div>
+      </div>
+  </nav>
+ 
+ 
+  <div id="content">
+      <div class="container-fluid" name="toTop" id="toPos">
+          <div class="row">
+              <div class="col-lg-offset-3 col-md-offset-3 col-md-offset-4 col-sm-6">
+                 <div class="payment">
+<!--                 <h1>payments method</h1>-->
+                  <ul>
+                      <li class="new" ng-click="postorder()"><span>cash on delivery</span></li>
+                      <li class="new1" ng-click="postorder()"><span><img src="credit-card-front-and-back-view" class="responsive r" width="50" height="50"></img>Credit Card/Debit Card</span></li>
+                  </ul>
+              </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!--<button ng-click="postorder()">cash on delivery</button>-->
+</body>
+</html>

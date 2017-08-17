@@ -1,0 +1,42 @@
+ .navbar-fixed-top{
+    background-color:#ffffff;
+}
+.img-responsive{
+     margin-top: -10px;
+}
+.modal-header{
+  background : #c0392b;
+}
+.navbar-right{
+    color: #ff0000;
+    font-family:"Sans",Verdana,"sans-serif";
+    font-weight:bold;
+}
+.navbar-bg{
+    color: #e50000;
+    font-family: "Sans",Verdana,"sans-serif";
+    font-weight:bold;
+    font-size:2.5em;
+}
+.pull-right{
+  padding-left: 20px;
+  padding-right: 9px;
+  margin-right: 10px;
+  margin-top:8px;
+} 
+#content{
+    margin-top: 100px;
+}
+#content .payment ul{
+    margin: 0px;
+    padding: 0px;
+    border:1px solid #d3d3d3;
+    padding:0px 25px;
+    margin:5px;
+    border-radius:5px;
+}
+#content .payment li{
+    text-transform: capitalize;
+    font-size: 25px;
+    cursor: pointer;
+}

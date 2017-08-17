@@ -1,0 +1,118 @@
+ <!DOCTYPE html>
+<html>
+    <head>
+        <title>bootstrap datepicker examples</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- Bootstrap CSS and bootstrap datepicker CSS used for styling the demo pages-->
+        <link rel="stylesheet" href="datepicker.css">
+        <link rel="stylesheet" href="bootstrap.css">
+         
+    </head>
+    <body>
+        <div class="container">
+            <div class="hero-unit">
+                <input  type="text" placeholder="Select Delivery Date"  id="example1">
+            </div>
+        </div>
+
+        <div class="container">
+         
+        <table class="table table-bodered table-responsive">
+        <tbody>
+        <tr>
+         <div class="radio">
+        <td><input type="radio" class="sev_check1"> ASAP </td>
+        <td><input type="radio" class="sev_check1"> Schedule for later </td>
+        </tr>
+        </tbody>
+        </table>
+        </div>
+        
+        </div>
+
+        <div class="container bg1">
+        <div class="checkbox tex-center">
+        <table class="table table-bordered table-responsive">
+     
+    <tbody>
+        <tr>
+            <div class="radio">
+            <td><input type="radio" class="sev_check">     09:30am-10:30am</td>
+            <td><input type="radio" class="sev_check">    10:30am-11:30am</td>
+            
+        </tr>
+        <tr>
+            <td><input type="radio" class="sev_check">    11:30am-12:20pm</td>
+            <td><input type="radio" class="sev_check">    12:30pm-01:30pm</td>
+             
+        </tr>
+        <tr>
+            <td><input type="radio" class="sev_check">    01:30pm-02:30pm</td>
+            <td><input type="radio" class="sev_check">    02:30pm-03:30pm</td>
+            
+        </tr>
+
+        <tr>
+            <td><input type="radio" class="sev_check">    03:30pm-04:30pm</td>
+            <td><input type="radio" class="sev_check">    04:30pm-05:30pm</td>
+            
+        </tr>
+
+        <tr>
+            <td><input type="radio" class="sev_check">    05:30pm-06:30pm</td>
+            <td><input type="radio" class="sev_check">    06:30pm-07:30pm</td>
+            
+        </tr>
+          <tr>
+            <td><input type="radio" class="sev_check">    07:30pm-08:30pm</td>
+            <td><input type="radio" class="sev_check">    08:30pm-09:30pm</td>
+            
+        </tr>
+          <tr>
+            <td><input type="radio" class="sev_check">    09:30pm-10:30pm</td>
+            <td><input type="radio" class="sev_check">    10:30pm-11:30pm</td>
+            </div>
+        </tr>
+    </tbody>
+</table>
+</div>
+       
+        <!-- Load jQuery and bootstrap datepicker scripts -->
+        <script src="jquery-1.9.1.min.js"></script>
+        <script src="bootstrap-datepicker.js"></script>
+        <script type="text/javascript">
+            // When the document is ready
+            $(document).ready(function () {
+                
+                $('#example1').datepicker({
+                    format: "dd/mm/yyyy"
+                });  
+            
+            });
+        </script>
+        <script>
+        $(function () {
+   $('.sev_check').change(function(e) {
+       e.preventDefault();
+       $('.sev_check').not(this).prop('checked', false);
+       $(this).prop('checked', true);
+   });
+});
+        </script>
+         <script>
+        $(function () {
+   $('.sev_check1').change(function(e) {
+       e.preventDefault();
+       $('.sev_check1').not(this).prop('checked', false);
+       $(this).prop('checked', true);
+   });
+});
+        </script>
+    </body>
+</html>
