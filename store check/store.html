@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Halanx-'Everyone's Personal Shopper</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="store.css">
+  <script src="js/angular.min.js"></script>
+  <script src="js/module.js"></script>
+  <script src="js/factory.js"></script>
+  <script src="js/controller.js"></script>
+  <style>
+   #mapCanvas {
+    width: 500px;
+    height: 300px;
+    margin-top:20px;
+   
+  }
+  #infoPanel {
+    float: left;
+    margin-left: 10px;
+  }
+  #infoPanel div {
+    margin-bottom: 5px;
+  }
+  .form-group{
+     margin-top:40px;
+ }
+ .btn-danger{
+ 	margin-top:20px;
+ }
+  </style>
+ 
+</head>
+
+<body ng-app="myapp" ng-controller="myctrl">
+<nav class="navbar navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+         
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.php"><img src="logo.png" class="img-responsive img-circle" width="50" height="50"> </a>
+            <a class="navbar-brand navbar-bg" href="index.html">Halanx</a>
+        </div>
+        
+         
+        <div class="collapse navbar-collapse" id="navbar1">
+            <ul class="nav navbar-nav navbar-right">
+               <button class="btn btn-danger btn-md pull-right" onclick="window.location='login.php'"> Login </button>
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<body>
+
+<div class="container-fluid bg2">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 well">
+            <form role="form"  method="post" name="signupform">
+                <fieldset>
+                    <legend>Contact Details</legend>
+
+                    <div class="form-group">
+                        <label for="name">first name</label>
+                        <input type="text" name="contact" placeholder="Enter the full name of contact person"   class="form-control" id="contactname" ng-model="first"/>
+                    </div>
+                         <div class="form-group">
+                        <label for="name">last name</label>
+                        <input type="text" name="contact" placeholder="Enter the full name of contact person"   class="form-control" id="contactname" ng-model="second"/>
+                    </div>     <div class="form-group">
+                        <label for="name">store name</label>
+                        <input type="text" name="contact" placeholder="Enter the full name of contact person"   class="form-control" id="storename" ng-model="store"/>
+                    </div>
+
+<!--
+                    <div class="form-group">
+                        <label for="address">Registered Address</label>
+                        <input type="text" name="address" placeholder="Enter the Registered Address"  class="form-control" id="productprice" ng-model="regadd"/>
+                    </div>
+-->
+                    
+                    <div class="form-group">
+                        <label for="location">Location of the store</label>
+                        <input type="text" name="location" placeholder="Enter the Location of the store"  class="form-control" id="location" ng-model="location"/>
+                    </div>
+
+                       <div class="form-group">
+                        <label for="location">product category</label>
+                        <input type="text" name="location" placeholder="product categories"  class="form-control" id="location" ng-model="prodcat"/>
+                    </div>
+                    <button ng-click="addcat()">addcategory</button>
+                    <span>{{cat}}</span>
+
+
+                    <div class="form-group">
+                        <label for="designation">Person's Designation</label>
+                        <input type="text" name="designation" placeholder="Enter the designation"  class="form-control" id="designation" ng-model="design"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cnumber">Contact Number</label>
+                        <input type="text" name="contactnumber" placeholder="Enter the Contact Number"  class="form-control" id="cnumber" ng-model="number"/>
+                    </div>
+
+                  
+                    <legend>Store Opening Details</legend>
+
+                    <div class="form-group">
+                    	<label class="col-md-4" for="day">Monday: </label>
+                    		<div class="col-sm-4"><label for="sel1">From:</label>
+                    			<select class="form-control" id="sel1" ng-model="monfrom">
+						            <option>9:00 AM</option>
+						            <option>10:00 AM</option>
+						            <option>11:00 AM</option>
+						            <option>12:00 AM</option>
+						            <option>1:00 PM</option>
+						            <option>2:00 PM</option>
+						            <option>3:00 PM</option>
+						            <option>4:00 PM</option>
+			        				<option>CLOSED</option>
+   								</select>
+							</div>
+
+
+              			  <div class="col-sm-4"><label for="mondayTill">Till:</label>
+                   				 <select class="form-control" id="mondayTill" ng-model="montill">
+		                 			<option>1:00 PM</option>
+								    <option>2:00 PM</option>
+								    <option>3:00 PM</option>
+								    <option>4:00 PM</option>
+								    <option>5:00 PM</option>
+								    <option>6:00 PM</option>
+								    <option>7:00 PM</option>
+								    <option>8:00 PM</option>
+								    <option>9:00 PM</option>
+								    <option>10:00 PM</option>
+								    <option>11:00 PM</option>
+								    <option>12:00 AM</option>
+				  				</select>
+                          </div>
+                   </div>
+
+ 						<div class="form-group">
+	                    	<label class="col-md-4" for="day">Tuesday: </label>
+	                    		<div class="col-sm-4"><label for="sel1">From:</label>
+	                    			<select class="form-control" id="sel1" ng-model="tuefrom">
+							            <option>9:00 AM</option>
+							            <option>10:00 AM</option>
+							            <option>11:00 AM</option>
+							            <option>12:00 AM</option>
+							            <option>1:00 PM</option>
+							            <option>2:00 PM</option>
+							            <option>3:00 PM</option>
+							            <option>4:00 PM</option>
+				        				<option>CLOSED</option>
+	   								</select>
+								</div>
+
+
+	              			  <div class="col-sm-4"><label for="TuesdayTill">Till:</label>
+	                   				 <select class="form-control" id="tuesdayTill" ng-model="tuetill">
+			                 			<option>1:00 PM</option>
+									    <option>2:00 PM</option>
+									    <option>3:00 PM</option>
+									    <option>4:00 PM</option>
+									    <option>5:00 PM</option>
+									    <option>6:00 PM</option>
+									    <option>7:00 PM</option>
+									    <option>8:00 PM</option>
+									    <option>9:00 PM</option>
+									    <option>10:00 PM</option>
+									    <option>11:00 PM</option>
+									    <option>12:00 AM</option>
+					  				</select>
+	                          </div>
+                 	  </div>
+
+                 	  <div class="form-group">
+	                    	<label class="col-md-4" for="day">Wednesday: </label>
+	                    		<div class="col-sm-4"><label for="sel1">From:</label>
+	                    			<select class="form-control" id="sel1" ng-model="wedfrom">
+							            <option>9:00 AM</option>
+							            <option>10:00 AM</option>
+							            <option>11:00 AM</option>
+							            <option>12:00 AM</option>
+							            <option>1:00 PM</option>
+							            <option>2:00 PM</option>
+							            <option>3:00 PM</option>
+							            <option>4:00 PM</option>
+				        				<option>CLOSED</option>
+	   								</select>
+								</div>
+
+
+	              			  <div class="col-sm-4"><label for="WednesdayTill">Till:</label>
+	                   				 <select class="form-control" id="wednesdayTill" ng-model="wedtill">
+			                 			<option>1:00 PM</option>
+									    <option>2:00 PM</option>
+									    <option>3:00 PM</option>
+									    <option>4:00 PM</option>
+									    <option>5:00 PM</option>
+									    <option>6:00 PM</option>
+									    <option>7:00 PM</option>
+									    <option>8:00 PM</option>
+									    <option>9:00 PM</option>
+									    <option>10:00 PM</option>
+									    <option>11:00 PM</option>
+									    <option>12:00 AM</option>
+					  				</select>
+	                          </div>
+                 	  </div>
+
+                 	  <div class="form-group">
+	                    	<label class="col-md-4" for="day">Thursday: </label>
+	                    		<div class="col-sm-4"><label for="sel1">From:</label>
+	                    			<select class="form-control" id="sel1" ng-model="thufrom">
+							            <option>9:00 AM</option>
+							            <option>10:00 AM</option>
+							            <option>11:00 AM</option>
+							            <option>12:00 AM</option>
+							            <option>1:00 PM</option>
+							            <option>2:00 PM</option>
+							            <option>3:00 PM</option>
+							            <option>4:00 PM</option>
+				        				<option>CLOSED</option>
+	   								</select>
+								</div>
+
+
+	              			  <div class="col-sm-4"><label for="ThursdayTill">Till:</label>
+	                   				 <select class="form-control" id="thursdayTill" ng-model="thutill">
+			                 			<option>1:00 PM</option>
+									    <option>2:00 PM</option>
+									    <option>3:00 PM</option>
+									    <option>4:00 PM</option>
+									    <option>5:00 PM</option>
+									    <option>6:00 PM</option>
+									    <option>7:00 PM</option>
+									    <option>8:00 PM</option>
+									    <option>9:00 PM</option>
+									    <option>10:00 PM</option>
+									    <option>11:00 PM</option>
+									    <option>12:00 AM</option>
+					  				</select>
+	                          </div>
+                 	  </div>
+
+
+                 	  <div class="form-group">
+	                    	<label class="col-md-4" for="day">Friday: </label>
+	                    		<div class="col-sm-4"><label for="sel1">From:</label>
+	                    			<select class="form-control" id="sel1" ng-model="frifrom">
+							            <option>9:00 AM</option>
+							            <option>10:00 AM</option>
+							            <option>11:00 AM</option>
+							            <option>12:00 AM</option>
+							            <option>1:00 PM</option>
+							            <option>2:00 PM</option>
+							            <option>3:00 PM</option>
+							            <option>4:00 PM</option>
+				        				<option>CLOSED</option>
+	   								</select>
+								</div>
+
+
+	              			  <div class="col-sm-4"><label for="FridayTill">Till:</label>
+	                   				 <select class="form-control" id="fridayTill" ng-model="fritill">
+			                 			<option>1:00 PM</option>
+									    <option>2:00 PM</option>
+									    <option>3:00 PM</option>
+									    <option>4:00 PM</option>
+									    <option>5:00 PM</option>
+									    <option>6:00 PM</option>
+									    <option>7:00 PM</option>
+									    <option>8:00 PM</option>
+									    <option>9:00 PM</option>
+									    <option>10:00 PM</option>
+									    <option>11:00 PM</option>
+									    <option>12:00 AM</option>
+					  				</select>
+	                          </div>
+                 	  </div>
+
+						<div class="form-group">
+	                    	<label class="col-md-4" for="day">Saturday: </label>
+	                    		<div class="col-sm-4"><label for="sel1">From:</label>
+	                    			<select class="form-control" id="sel1" ng-model="satfrom">
+							            <option>9:00 AM</option>
+							            <option>10:00 AM</option>
+							            <option>11:00 AM</option>
+							            <option>12:00 AM</option>
+							            <option>1:00 PM</option>
+							            <option>2:00 PM</option>
+							            <option>3:00 PM</option>
+							            <option>4:00 PM</option>
+				        				<option>CLOSED</option>
+	   								</select>
+								</div>
+
+
+	              			  <div class="col-sm-4"><label for="SaturdayTill">Till:</label>
+	                   				 <select class="form-control" id="SaturdayTill" ng-model="sattill">
+			                 			<option>1:00 PM</option>
+									    <option>2:00 PM</option>
+									    <option>3:00 PM</option>
+									    <option>4:00 PM</option>
+									    <option>5:00 PM</option>
+									    <option>6:00 PM</option>
+									    <option>7:00 PM</option>
+									    <option>8:00 PM</option>
+									    <option>9:00 PM</option>
+									    <option>10:00 PM</option>
+									    <option>11:00 PM</option>
+									    <option>12:00 AM</option>
+					  				</select>
+	                          </div>
+                 	  </div>
+
+						<div class="form-group">
+	                    	<label class="col-md-4" for="day">Sunday: </label>
+	                    		<div class="col-sm-4"><label for="sel1">From:</label>
+	                    			<select class="form-control" id="sel1" ng-model="sunfrom">
+							            <option>9:00 AM</option>
+							            <option>10:00 AM</option>
+							            <option>11:00 AM</option>
+							            <option>12:00 AM</option>
+							            <option>1:00 PM</option>
+							            <option>2:00 PM</option>
+							            <option>3:00 PM</option>
+							            <option>4:00 PM</option>
+				        				<option>CLOSED</option>
+	   								</select>
+								</div>
+
+
+	              			  <div class="col-sm-4"><label for="sundayTill">Till:</label>
+	                   				 <select class="form-control" id="sundayTill" ng-model="suntill">
+			                 			<option>1:00 PM</option>
+									    <option>2:00 PM</option>
+									    <option>3:00 PM</option>
+									    <option>4:00 PM</option>
+									    <option>5:00 PM</option>
+									    <option>6:00 PM</option>
+									    <option>7:00 PM</option>
+									    <option>8:00 PM</option>
+									    <option>9:00 PM</option>
+									    <option>10:00 PM</option>
+									    <option>11:00 PM</option>
+									    <option>12:00 AM</option>
+					  				</select>
+	                          </div>
+                 	  </div>
+
+                 	  	<legend>Business Details</legend>
+
+                 	  	<div class="form-group">
+	                        <label for="name">Company's Legal Name</label>
+	                        <input type="text" name="contact" placeholder="Enter the company's legal name"   class="form-control" id="companyname" ng-model="companylegal"/>
+                        </div>
+
+                        	<div class="form-group">
+		                        <label for="name">Company's name known to customers</label>
+		                        <input type="text" name="contact" placeholder="Enter the comapny's name known to customers"   class="form-control" id="companyname" ng-model="companycustomer"/>
+                        	</div>
+
+                        	<div class="form-group">
+		                        <label for="name">PAN Number of the company</label>
+		                        <input type="text" name="pannumber" placeholder="Enter the PAN number of company"   class="form-control" id="pannumber" ng-model="pan"/>
+                        	</div>
+
+
+                        	<legend>Bank Account Details</legend>
+
+                        	<div class="form-group">
+		                        <label for="name" class="col-md-3">Account Number</label>
+		                        <input type="password" name="accnumber" placeholder="Enter the Account Number"  class="form-control" id="accnumberr" ng-model="accno"/>
+                        	</div>
+
+                        	<div class="form-group">
+		                        <label for="name" class="col-md-3">Account Type</label>
+		                          <label class="radio-inline" for="curracc">
+      								<input type="radio" name="optradio" id="curracc" ng-model="result"  ng-value="'current'">Current Account
+    								</label>
+                    					<label class="radio-inline" for="savacc">
+      								<input type="radio" name="optradio" id="savacc" ng-model="result"  ng-value="'saving'">Savings Account
+   								 </label>
+                        	</div>
+
+                        	<div class="form-group">
+		                        <label for="name" class="col-md-3">Bank Name</label>
+		                        <input type="password" name="bankname" placeholder="Enter the Bank Name"  class="form-control" id="bankname" ng-model="bankname"/>
+                        	</div>
+
+                        	<div class="form-group">
+		                        <label for="name" class="col-md-3">Bank Branch</label>
+		                        <input type="text" name="bankbranch" placeholder="Enter the Bank Branch"  class="form-control" id="bankbranch" ng-model="bankbranch"/>
+                        	</div>
+
+                        	<div class="form-group">
+		                        <label for="name" class="col-md-3">Bank Address</label>
+		                        <input type="text" name="bankaddr" placeholder="Enter the Bank Address"  class="form-control" id="bankaddr"
+		                        ng-model="bankadd"/>
+                        	</div>
+
+                        	<div class="form-group">
+		                        <label for="name" class="col-md-3">IFSC Code</label>
+		                        <input type="text" name="code" placeholder="Enter the IFSC Code"  class="form-control" id="code" ng-model="ifsc"/>
+                        	</div>
+
+                        	<legend>Images</legend>
+                        	<div class="form-group">
+		                        <label for="name" class="col-md-8">Upload Image(Company's logo or any other picture for profile pic)</label>
+		                        <input type="file"  name="fileimage" fileread="vm.uploadme"  class="form-control" id="storepic" file-input="files" />
+                        	</div>
+                        	
+    	<div class="form-group">
+		                        <label for="name" class="col-md-3">store id</label>
+		                        <input type="text" name="code" placeholder="enter the store id"  class="form-control"  ng-model="storeid"/>
+                        	</div>
+<!--
+                        	<div class="form-group">
+		                        <label for="name" class="col-md-3">store category</label>
+		                        <input type="text" name="code" placeholder="enter the store category"  class="form-control" ng-model="storecat"/>
+                        	</div>
+-->
+         <div class="form-group">
+         <label for="name" class="col-md-3">store category</label>
+         
+          <select ng-model="storecat">
+  <option value="Food">Food</option>
+  <option value="Grocery">Grocery</option>
+  
+</select>
+         </div>
+          
+
+      	<div class="form-group">
+		                   <input type="checkbox" name="code" ng-model="verify">verified
+                        	</div>
+<span>{{verify}}</span>
+
+    <div class="form-group">
+     <div id="infoPanel">
+    
+    
+     <input id="info"  size="50" value=""><br>
+     
+    <input id="searchTextField" class="test" type="text" size="37"/>
+    <div id="mapCanvas"></div>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXnunhscL2jKBg62KkqAhJwSMXhDoN9DE&libraries=places"></script>
+    <script>
+    var geocoder = new google.maps.Geocoder();       
+
+            function geocodePosition(pos) {
+                geocoder.geocode({
+                    latLng: pos
+                }, function(responses) {
+                    if (responses && responses.length > 0) {
+                        updateMarkerAddress(responses[0].formatted_address.replace(", Delhi","").split(", ").splice(-1,1));
+                    } else {
+                        updateMarkerAddress('Update!');
+                    }
+                });
+            }
+
+
+            function updateMarkerPosition(latLng) {
+                document.getElementById('info').value = [
+                    latLng.lat(),
+                    latLng.lng()
+                ] 
+                 
+                 var Latitude= latLng.lat();
+                 var Longitude= latLng.lng();
+                 localStorage.setItem("Latitude",Latitude);
+                 localStorage.setItem("Longitude",Longitude);
+                
+            }
+
+            function updateMarkerAddress(str) {
+                document.getElementById('searchTextField').value = str;
+            }
+
+            function initialize() {
+                var latLng = new google.maps.LatLng(28.6139,77.2090);
+                var map = new google.maps.Map(document.getElementById('mapCanvas'), {
+                    zoom: 6,
+                    center: latLng,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP,
+                    streetViewControl: false,
+                    mapTypeControl: false
+                   
+                });
+                var marker = new google.maps.Marker({
+                    position: latLng,
+                    map: map,
+                    draggable: true,
+                    title:"Drag marker to set position"
+                });
+                
+                var input = document.getElementById('searchTextField');
+        var autocomplete = new google.maps.places.Autocomplete(input);
+
+        autocomplete.bindTo('bounds', map);
+
+                // Update current position info.
+                updateMarkerPosition(latLng);
+                //geocodePosition(latLng);
+
+                // Add dragging event listeners.
+                google.maps.event.addListener(marker, 'dragstart', function() {
+                    updateMarkerAddress('Dragging...');
+                });
+
+                google.maps.event.addListener(marker, 'drag', function() {
+                    updateMarkerPosition(marker.getPosition());
+                });
+
+                google.maps.event.addListener(marker, 'dragend', function() {
+                    geocodePosition(marker.getPosition());
+                });
+                
+                google.maps.event.addListener(autocomplete, 'place_changed', function() {
+                    input.className = '';
+          var place = autocomplete.getPlace();
+          if (!place.geometry) {
+            // Inform the user that the place was not found and return.
+            input.className = 'notfound';
+            return;
+          }
+
+          // If the place has a geometry, then present it on a map.
+          if (place.geometry.viewport) {
+            map.fitBounds(place.geometry.viewport);
+          } else {
+            map.setCenter(place.geometry.location);
+            map.setZoom(17);  // Why 17? Because it looks good.
+          }
+            marker.setPosition(place.geometry.location);
+updateMarkerPosition(marker.getPosition());
+//geocodePosition(marker.getPosition());
+         
+        });
+            }
+
+            // Onload handler to fire off the app.
+            google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+</div>
+</div>
+ 
+
+                    <div class="form-group">
+                        <input type="submit" value="Submit" id="submit" ng-click="submitform()"   class="btn btn-danger"/>
+                       <input type="submit" value="get" id="submit" ng-click="getdata()"   class="btn btn-danger"/>
+                        <input type="submit" value="update" id="submit" ng-click="updateform()"   class="btn btn-danger"/>
+                    </div>
+                </fieldset>
+            </form>
+            
+             
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="list">
+                <ul>
+                    <li ng-repeat="i in arr" ng-click="inputdata(i)" style="border:1px solid black";>
+                        <span>{{i.id}}</span>
+                        <br>
+                        <span>{{i.StoreName}}</span>
+                        <br>
+                        <span>Verified=>{{i.Verified}}</span>
+                        <br>
+                        <span>location=>{{i.StoreAddress}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<div class="container-fluid bg3">
+    <div class="row row_11">
+        <div class="col-md-2"><a href="aboutus.html">About Us</a></div>
+        <div class="col-md-2"><a href="#">Careers</a></div>
+        <div class="col-md-2"><a href="#">Blog</a></div>
+        <div class="col-md-2"><a href="#">Press</a></div>
+        <div class="col-md-2"><a href="contactus.php">Contact Us</a></div>
+        <div class="col-md-2"><a href="#">Terms</a></div>
+    </div>
+
+    <div class="row row_13">
+        <div class="text-center center-block">
+           <a href="https://www.facebook.com"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
+           <a href="https://twitter.com"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
+           <a href="https://plus.google.com"><i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i></a>
+           <a href="mailto:mr.sidhantkumar1@gmail.com"><i id="social-em" class="fa fa-envelope-square fa-3x social"></i></a>
+        </div>
+    </div>
+
+    <div class="row row_12">
+        <span class="glyphicon glyphicon-copyright-mark"> Halanx 2017 </span>
+    </div>
+</div>
+ 
+
+
+
+
+
+
+
+
+</body>
+</html>
