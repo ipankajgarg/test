@@ -1,0 +1,170 @@
+ <!DOCTYPE html>
+<html>
+<head>
+    <title>Halanx-'Everyone's Personal Shopper</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheet/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="productsnew1.css">
+  <script src="libs/angular.min.js"></script>
+<!--  <script src="bower_components/angular-base64/angular-base64.js"></script>-->
+  <script src="js/module.js"></script>
+  <script src="js/factory.js"></script>
+  <script src="js/controller.js"></script>
+ 
+</head>
+
+<body ng-app="myapp" ng-controller="myctrl">
+<nav class="navbar navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+         
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.php"><img src="logo.png" class="img-responsive img-circle" width="50" height="50"> </a>
+            <a class="navbar-brand navbar-bg" href="index.html">Halanx</a>
+        </div>
+        
+         
+        <div class="collapse navbar-collapse" id="navbar1">
+            <ul class="nav navbar-nav navbar-right">
+               <button class="btn btn-danger btn-md pull-right" onclick="window.location='login.php'"> Login </button>
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid bg2">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 well">
+            <form role="form" enctype="multipart/form-data"  method="post" name="signupform" >
+                <fieldset>
+                    <legend>Product Details</legend>
+                                   <div class="form-group">
+                      <label for="name">store id</label>
+                      <input type="text" name="available" placeholder="" ng-model="availablestores"   class="form-control" id="availableinstores" />
+                    
+                    </div>
+                    <button ng-click="storecat()">getcategory</button>
+
+                    <div class="form-group">
+                        <label for="name">Product Name</label>
+                        <input type="text" name="productname" placeholder="Enter the product name"   class="form-control" id="productname" ng-model="productname"/>
+                        
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price">Product Price</label>
+                        <input type="text" name="productprice" placeholder="Enter the product price"  class="form-control" id="productprice" ng-model="productprice"/>
+                         
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="category">Product Category</label>
+<!--                        <input type="text" name="productcategory" placeholder="Enter the Product Category"  class="form-control" id="productcategory" ng-model="productcategory"/>-->
+                       <select ng-model="productcategory" >
+  <option ng-repeat="i in list" value="{{i}}">{{i}}</option>
+<!--
+  <option value="saab">Saab</option>
+  <option value="mercedes">Mercedes</option>
+  <option value="audi">Audi</option>
+-->
+</select>
+                        
+                    </div>
+
+
+                      <div class="form-group">
+                   
+                        <input type="file" name="fileToUpload" class="form-control"  fileread="vm.uploadme" id="fileToUpload"  >
+                        
+                        
+                     </div>
+
+
+                    
+
+                    <div class="form-group">
+                      <label for="name">Product Description</label>
+                      <input type="text" name="productdescription" placeholder="Enter the Product Description" ng-model="productdescription"   class="form-control" id="productdescription" />
+                       
+                    </div>
+
+                    <div class="form-group">
+                      <label for="name">Product Size</label>
+                      <input type="text" name="productsize" min="1" max="5" placeholder="Enter the Product Size" ng-model="productsize"  class="form-control" id="productsize" />
+                       
+                    </div>
+
+     
+
+                    <div class="form-group">
+                        <input type="submit" value="Submit" id="submit" ng-click="postdata()"  class="btn btn-danger"/>
+                     
+                    </div>
+                </fieldset>
+            </form>
+            
+             
+ <input type="submit" value="get" ng-click="getdata()">
+                        <input type="submit" value="update" ng-click="update()">
+        </div>
+     
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="getdata">
+              
+                <h1>All Products</h1>
+                 <input type="text" ng-model="myid" ng-hide="hide">
+               <ul>
+                   <li ng-repeat="i in arr" ng-click="filldata(i)">
+                       <img src="{{i.ProductImage}}" alt="">
+                       <br>
+                       <span>name-{{i.ProductName}}</span>
+                       <br>
+                       <span>size-{{i.ProductSize}}</span>
+                       <br>
+                       <span>price-{{i.Price}}</span>
+                   </li>
+               </ul>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<div class="container-fluid bg3">
+    <div class="row row_11">
+        <div class="col-md-2"><a href="aboutus.html">About Us</a></div>
+        <div class="col-md-2"><a href="#">Careers</a></div>
+        <div class="col-md-2"><a href="#">Blog</a></div>
+        <div class="col-md-2"><a href="#">Press</a></div>
+        <div class="col-md-2"><a href="contactus.php">Contact Us</a></div>
+        <div class="col-md-2"><a href="#">Terms</a></div>
+    </div>
+
+    <div class="row row_13">
+        <div class="text-center center-block">
+           <a href="https://www.facebook.com"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
+           <a href="https://twitter.com"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
+           <a href="https://plus.google.com"><i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i></a>
+           <a href="mailto:mr.sidhantkumar1@gmail.com"><i id="social-em" class="fa fa-envelope-square fa-3x social"></i></a>
+        </div>
+    </div>
+
+    <div class="row row_12">
+        <span class="glyphicon glyphicon-copyright-mark"> Halanx 2017 </span>
+    </div>
+</div>
+ 
+</body>
+</html>
