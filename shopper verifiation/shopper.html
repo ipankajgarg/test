@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Halanx-'Everyone's Personal Shopper</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="productsnew1.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/module.js"></script>
+    <script src="js/factory.js"></script>
+    <script src="js/controller.js"></script>
+
+  
+ 
+</head>
+
+<body ng-app="myapp" ng-controller="myctrl">
+<nav class="navbar navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+         
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.php"><img src="logo.png" class="img-responsive img-circle" width="50" height="50"> </a>
+            <a class="navbar-brand navbar-bg" href="index.html">Halanx</a>
+        </div>
+        
+         
+        <div class="collapse navbar-collapse" id="navbar1">
+            <ul class="nav navbar-nav navbar-right">
+               <button class="btn btn-danger btn-md pull-right" onclick="window.location='login.php'"> Login </button>
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid bg2">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 well">
+            <form role="form"  name="signupform" method="post">
+                <fieldset>
+                    <legend>Shopper Details</legend>
+
+                    <div class="form-group">
+                        <label for="name" >firstname</label>
+                        <input type="text" name="name" placeholder="Enter your first name"   class="form-control" id="firstname" ng-model="firstname"/>
+                    </div>
+                            <div class="form-group">
+                        <label for="name" >lastname</label>
+                        <input type="text" name="name" placeholder="Enter your last name"   class="form-control" id="lastname" ng-model="lastname"/>
+                    </div>
+
+
+                    <div class="form-group">
+                     <label>Upload Shopper's Picture</label>
+         			<input type="file" name="spic" class="form-control" readonly fileread="vm.uploadme">
+       				</div>
+
+
+                    <div class="form-group">
+                        <label for="mobilenumber">Mobile Number</label>
+                        <input type="text" name="mobilenumber" placeholder="Enter the Mobile Number"  class="form-control" id="mobilenumber" ng-model="mobilenumber"/>
+                    </div>
+<!--
+                        <div class="form-group">
+                        <label for="email">EmailId</label>
+                        <input type="text" name="emailid" placeholder="Enter the email id" id="emailid" class="form-control" ng-model="email"/>
+                    </div>
+-->
+                         <div class="form-group">
+                        <label for="atype">id type</label>
+                        <input type="text" name="name" placeholder="Enter the id type"  class="form-control" id="atype"  ng-model="idtype"/>
+                    </div>
+
+                    
+                     <div class="form-group">
+                        <label for="anumber">id Number</label>
+                        <input type="text" name="anumber" placeholder="Enter the Aadhar Number"   class="form-control" id="anumber" ng-model="idnumber"/>
+                    </div>
+               
+<!--
+                     <div class="form-group">
+                     <label>Upload Aadhar Card</label>
+         			<input type="file" name="aadharcard" class="form-control" readonly ng-model="aadharimage">
+       				</div>
+-->
+
+<!--
+       				 <div class="form-group">
+                     <label>Upload Shopper's Driving License</label>
+         			 <input type="file" name="drivinglicense" class="form-control" readonly ng-model="license">
+       				</div>
+-->
+
+
+
+                    <legend>Vehicle Details</legend>
+
+<!--
+                    <div class="form-group">
+                        <label for="name">Vehicle License</label>
+                        <input type="text" name="name" placeholder="Enter the license number of vehicle"   class="form-control" id="vlicense" ng-model="vlicense"/>
+                    </div>
+-->
+
+                    <div class="form-group">
+                        <label for="name">Vehicle Name</label>
+                        <input type="text" name="name" placeholder="Enter the name of vehicle"   class="form-control" id="vname" ng-model="vname"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">Vehicle Size</label>
+                        <input type="text" name="name" placeholder="Enter the size of vehicle"   class="form-control" id="vsize" ng-model="vsize"/>
+                    </div>
+
+                    <legend>bank Details</legend>
+
+                    <div class="form-group">
+		                        <label for="name" class="col-md-3">Account Number</label>
+		                        <input type="password" name="accnumber" placeholder="Enter the Account Number"  class="form-control" id="accnumberr" ng-model="accountnumber"/>
+                        	</div>
+
+                        	<div class="form-group">
+		                        <label for="name" class="col-md-3">Account Type</label>
+		                          <label class="radio-inline" for="curracc">
+      								<input type="radio" name="optradio" id="curracc" ng-model="result"  ng-value="'current'">Current Account
+    								</label>
+                    					<label class="radio-inline" for="savacc">
+      								<input type="radio" name="optradio" id="savacc" ng-model="result" ng-value="'saving'">Savings Account
+   								 </label>
+                        	</div>
+
+                        	<div class="form-group">
+		                        <label for="name" class="col-md-3">Bank Name</label>
+		                        <input type="password" name="bank" placeholder="Enter the Bank Name"  class="form-control" id="bankname" ng-model="bankname"/>
+                        	</div>
+
+                        	<div class="form-group">
+		                        <label for="name" class="col-md-3">Bank Branch</label>
+		                        <input type="text" name="bankbranch" placeholder="Enter the Bank Branch"  class="form-control" id="bankbranch" ng-model="bankbranch"/>
+                        	</div>
+
+                        	<div class="form-group">
+		                        <label for="name" class="col-md-3">Bank Address</label>
+		                        <input type="text" name="bankaddr" placeholder="Enter the Bank Address"  class="form-control" id="bankaddr"
+		                        ng-model="bankaddress"/>
+                        	</div>
+
+                        	<div class="form-group">
+		                        <label for="name" class="col-md-3">IFSC Code</label>
+		                        <input type="text" name="code" placeholder="Enter the IFSC Code"  class="form-control" id="code" ng-model="ifsc"/>
+                        	</div>
+                        	
+                        	<div class="form-group">
+		                    
+		                        <input type="checkbox" name="code"  ng-model="verify"/>verified
+                        	</div>
+                        	<span>{{verify}}</span>
+                        	<div class="form-group" >
+                        <input type="submit" value="Submit" id="submit" ng-click="submitcode()"  class="btn btn-danger" />
+                         <input type="submit" value="get" id="submit" ng-click="getdata()"  class="btn btn-danger" />
+                        <input type="submit" value="update" id="submit" ng-click="updatecode()"  class="btn btn-danger" />
+                    </div>
+                    
+                     </div>
+                     
+
+                     
+                     
+                </fieldset>
+            </form>
+            
+            
+             
+        </div>
+         <div class="row">
+        <div class="col-md-8 col-md-offset-2 well">
+            <form role="form"  name="signupform" method="post" >
+                                 <div class="form-group">
+                     <label>Upload Aadhar Card</label>
+         			<input type="file" name="aadharcard" class="form-control" readonly fileread="vm.uploadme1" >
+       				</div>
+
+
+
+       				 <div class="form-group">
+                     <label>Upload Shopper's Driving License</label>
+         			 <input type="file" name="drivinglicense" class="form-control" readonly fileread="vm.uploadme2" >
+       				</div>
+       				  <div class="form-group">
+                        <label for="name">Vehicle License</label>
+                        <input type="file" name="name"   class="form-control" id="vlicense" fileread="vm.uploadme3" />
+                    </div>
+
+<div class="form-group" >
+                        <input type="submit" value="Submit" id="submit" ng-click="submitimage()"  class="btn btn-danger" />
+                         
+                         <input type="submit" value="update" id="submit" ng-click="update()"  class="btn btn-danger" />
+                         
+                    </div>
+            </form>
+             </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="list">
+                <ul>
+                    <li ng-repeat="i in arr" ng-click="inputdata(i)" style="border: 1px solid black;">
+                       <span>{{i.FirstName}}</span>
+                       <br>
+                        <span>{{i.PhoneNo}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+<!--
+      <div class="form-group">
+                        
+                        <label for="name">Vehicle License</label>
+                        <input type="file" name="name"   class="form-control" id="vlicense" ng-model="vlicense" file-input="files3"/>
+                        <button ng-click="go()">do</button>
+                        <img ng-src="{{files3[0].name}}" alt="">
+                    </div>
+-->
+
+                        
+                    </div>
+    
+    </div>
+    
+</div>
+</div>
+</div>
+
+
+<div class="container-fluid bg3">
+    <div class="row row_11">
+        <div class="col-md-2"><a href="aboutus.html">About Us</a></div>
+        <div class="col-md-2"><a href="#">Careers</a></div>
+        <div class="col-md-2"><a href="#">Blog</a></div>
+        <div class="col-md-2"><a href="#">Press</a></div>
+        <div class="col-md-2"><a href="contactus.php">Contact Us</a></div>
+        <div class="col-md-2"><a href="#">Terms</a></div>
+    </div>
+
+    <div class="row row_13">
+        <div class="text-center center-block">
+           <a href="https://www.facebook.com"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
+           <a href="https://twitter.com"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
+           <a href="https://plus.google.com"><i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i></a>
+           <a href="mailto:mr.sidhantkumar1@gmail.com"><i id="social-em" class="fa fa-envelope-square fa-3x social"></i></a>
+        </div>
+    </div>
+
+    <div class="row row_12">
+        <span class="glyphicon glyphicon-copyright-mark"> Halanx 2017 </span>
+    </div>
+</div>
+ 
+
+
+
+
+
+
+
+
+</body>
+</html>
+                     
