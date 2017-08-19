@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta content="width=device-width, initial-scale=1.0" name="viewport" >
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<style>
+.body{
+	background:#f7f7f7;
+}
+ .navbar-fixed-top{
+    background-color:#ffffff;
+}
+.navbar-bg{
+    color: #e50000;
+    font-family: "Sans",Verdana,"sans-serif";
+     
+    font-size:2.5em;
+    
+}
+.navbar-bg a{
+  text-decoration:none;
+  cursor:pointer;
+}
+.navbar-bg a:hover{
+  color:#ff0000;
+}
+#header {
+  background: #ffffff;
+  border-bottom: 1px rgba(0, 0, 0, 0.07) solid;
+  z-index: 99;
+  &.--not-top {
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  }
+}
+* {
+  transition-duration: 0.2s;
+}
+ 
+#top-shadow {
+position: fixed;
+top: 0;
+left: 20px;
+width: 100%;
+height: 60px;
+z-index: 999;
+-webkit-box-shadow: 0 8px 8px rgba(211, 211, 211, 0.8);
+-moz-box-shadow: 0 8px 8px rgba(211, 211, 211, 0.8);
+box-shadow: 0 8px 8px rgba(211, 211, 211, 0.8);
+display: none;
+}
+
+.navbar.affix{  
+top:0; 
+width:100%;
+}
+
+ 
+.navbar{    
+z-index:1000;  
+}
+.bg2{
+	margin-top:120px;
+}
+#demo {
+  width: 600px;
+  margin: 100px auto 0 auto;
+}
+#demo .search-box {
+  width: 100%;
+  position: relative;
+  border-radius:4px;
+}
+#demo .search-box input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #ddd;
+  font-size: 12pt;
+  margin: 0px;
+}
+#demo .search-box input[type="text"]:focus {
+  box-shadow: 5px 5px 5px 5px; !important;
+  outline: none !important;
+  radius:4px;
+}
+#demo .search-box .search-filters {
+  display: none;
+  width: 100%;
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-top: 0px;
+}
+#demo .search-box .search-filters:after {
+  content: "";
+  display: table;
+  height:80%;
+  width:80%;
+  font-family:'Droid-Sans',serif;
+  margin-left:2px;
+}
+#demo .search-box .search-filters label {
+  margin-bottom: 7px;
+  font-size: 13px;
+  display: inline-block;
+  width: 50%;
+  height:50%;
+  float: left;
+}
+#myProgress {
+  width: 50%;
+  background-color: #ddd;
+  border-radius:24px;
+  margin-left:340px;
+}
+
+#myBar {
+  width: 80px;
+  height: 30px;
+  background-color: #4CAF50;
+  text-align: center;
+  line-height: 30px;
+  color: white;
+   
+}
+.bg1{
+	margin-top:150px;
+}
+.row_1{
+	font-size:30px;
+	font-family:'cursive';
+	margin-left:150px;
+	margin-bottom:20px;
+	font-weight:bold;
+	color:#c0392b;
+}
+</style>
+</head>
+<body>
+ <nav class="navbar navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar1">
+                <span class="sr-only"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+            <a class="navbar-brand navbar-bg" href="#"><center>Expense Manager</center></a>
+        </div>
+  </nav>
+ <div class="container-fluid bg1">
+
+ <div id="myProgress">
+  <div id="myBar">10%</div>
+</div>
+<br>
+<br>
+ <div id="myProgress">
+  <div id="myBar">10%</div>
+</div>
+
+
+ <div id="demo">
+    <form action="" method="get">
+        <div class="search-box">
+        	<div class="row row_1">Search by Category</div>
+            <input type="text" value="" class="search-input" placeholder="Search:" />
+            <br>
+            <div style="margin-top : 20px">
+            <label for="">category</label>
+            <select id="select">
+  <option value="food">food expenses</option>
+  <option value="clothes">clothes expenses</option>
+  <option value="bill">bill expenses</option>
+  
+</select>
+</div>
+<!--
+            <div class="search-filters">
+              <label><input type="radio" name="filter" value="value" />Food Expense</label>
+              <label><input type="radio" name="filter" value="value" />Clothing Expense</label>
+              <label><input type="radio" name="filter" value="value" />Transportation Expense</label>
+              <label><input type="radio" name="filter" value="value" />Medical Expense</label>
+               
+            </div>
+-->
+        </div>
+    </form>
+</div>
+
+
+<div class="container-fluid bg2">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4 well">
+<!--            <form role="form"  name="signupform">-->
+                <fieldset>
+                    <legend>Add new Expense</legend>
+
+                    <div class="form-group">
+                        <label for="name">Amount</label>
+                        <input type="text" name="amount" placeholder="Enter the amount spent"   class="form-control" id="amount"/>
+                        
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">Category</label>
+                        <input type="text" name="category" placeholder="Enter the category of expense"  class="form-control" id="category"/>
+                         
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="name">Payment Method</label>
+                        <input type="text" name="payment" placeholder="Enter the Payment Method"  class="form-control" id="Payment"/>
+                        
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">Expense Name</label>
+                        <input type="text" name="expensename" placeholder="Enter the Expense name" required class="form-control" id="expensename" />
+                         
+                    </div>
+
+      
+              
+
+                     
+
+                    <div class="form-group">
+                        <input type="submit" value="Add" id="submit"   onclick="showInput()" class="btn btn-danger"/>
+                    </div>
+                </fieldset>
+<!--            </form>-->
+            
+             
+        </div>
+    </div>
+     
+     
+
+
+
+
+
+ 
+<script>
+    function showInput(){
+        alert("added in category")
+      var amount  = document.getElementById("amount");
+      var payment  = document.getElementById("Payment");
+        var category = document.getElementById("category");
+        var expensename = document.getElementById("expensename");
+       var ul = document.getElementById("select")
+       
+      var option = document.createElement("option");
+       option.innerHTML = category.value;
+        ul.appendChild(option);
+    }
+    
+jQuery(document).ready(function($){
+  $('.search-box input[type="text"]').focus(function(){
+    $('.search-filters').slideToggle();
+  });
+  $('.search-filters input[type="radio"]').on('click', function(){
+    var placeholder_text = $(this).closest('label').text();
+    $('.search-input').attr('placeholder', 'search: '+placeholder_text);
+    $('.search-filters').slideToggle();
+  });
+});
+</script>
+
+
+
+
+
+
+
+</body>
+
+
+  <script>
+$(function(){
+var navbar = $('.navbar');
+$(window).scroll(function(){
+    if($(window).scrollTop() <= 40){
+      navbar.css('box-shadow', 'none');
+    } else {
+      navbar.css('box-shadow', '0px 10px 20px rgba(0, 0, 0, 0.4)'); 
+    }
+});  
+})
+$(function(){
+
+
+var stickyElement   = '.panel-affix',    
+bottomElement   = '#fake-footer';  
+
+if($( stickyElement ).length){
+$( stickyElement ).each(function(){
+
+   
+  var fromTop = $( this ).offset().top, 
+    
+    fromBottom = $( document ).height()-($( this ).offset().top + $( this ).outerHeight()),
+    
+    stopOn = $( document ).height()-( $( bottomElement ).offset().top)+($( this ).outerHeight() - $( this ).height()); 
+
+   
+  if( (fromBottom-stopOn) > 200 ){
+     
+    $( this ).css('width', $( this ).width()).css('top', 0).css('position', '');
+     
+    $( this ).affix({
+      offset: { 
+        
+        top: fromTop - 80,  
+         
+        bottom: stopOn
+      }
+    
+    }).on('affix.bs.affix', function(){ $( this ).css('top', '80px').css('position', ''); });
+  }
+  
+  $( window ).trigger('scroll'); 
+}); 
+}
+
+});
+
+
+$('body').scrollspy({
+offset: 80
+});
+
+
+$(function() {
+$('a[href*=#]:not([href=#])').click(function() {
+if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+var target = $(this.hash);
+target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+if (target.length) {
+$('html,body').animate({
+  scrollTop: target.offset().top
+}, 1000);
+return false;
+}
+}
+});
+});
+</script>
+
+</html>
